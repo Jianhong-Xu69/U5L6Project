@@ -46,10 +46,20 @@ public class BagelShop
     public boolean payForBagels(CreditCard card, int quantity, String cardPIN)
     {
         if (card.checkPIN(cardPIN)) {
-            card.chargeCard(quantity*bagelPrice);
-            inventory -= quantity;
-            profit += quantity*bagelPrice;
-            return true;
+            if (inventory != 0) {
+                if (inventory >= quantity) {
+                    inventory -= quantity;
+                    profit += quantity * bagelPrice;
+                    card.chargeCard(quantity * bagelPrice);
+                } else {
+                    profit += inventory * bagelPrice;
+                    card.chargeCard(inventory * bagelPrice);
+                    inventory = 0;
+                }
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
