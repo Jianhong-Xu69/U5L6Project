@@ -4,10 +4,20 @@ public class BankApp {
     private CreditCard howDoTheseWork;
     private CreditCard whyDoYouWantASecondOne;
 
-    public BankApp () {
+    public BankApp (String name) {
         robinDaBank = new Bank();
         leOldeShoppe = new BagelShop("Le Olde Shoppe", 500, 2, robinDaBank);
         howDoTheseWork = new CreditCard("default", String.valueOf((int) (Math.random()*9000)+1000));
+    }
+
+    public CreditCard cardInfo(CreditCard choice) {
+        return choice;
+    }
+    public Bank bankInfo() {
+        return robinDaBank;
+    }
+    public BagelShop shopInfo() {
+        return leOldeShoppe;
     }
 
     public String buyThings (CreditCard card, int quantity, String cardPIN) {
