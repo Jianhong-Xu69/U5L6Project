@@ -10,8 +10,8 @@ public class BankApp {
         howDoTheseWork = new CreditCard("default", String.valueOf((int) (Math.random()*9000)+1000));
     }
 
-    public CreditCard cardInfo(CreditCard choice) {
-        return choice;
+    public CreditCard cardInfo() {
+        return howDoTheseWork;
     }
     public Bank bankInfo() {
         return robinDaBank;
@@ -24,7 +24,15 @@ public class BankApp {
         if (leOldeShoppe.payForBagels(card,quantity,cardPIN)) {
             return "Successfully bought " + quantity + " bagels for " + quantity*2 + " moneys";
         } else {
-            return "You stupid poo head put in the wrong PIN dummy! Or they ran out of stock one of the two";
+            return "You stupid head put in the wrong PIN dummy! Or they ran out of stock one of the two";
+        }
+    }
+
+    public String returnThings (CreditCard card, int quantity, String cardPIN) {
+        if (leOldeShoppe.returnBagels(card,quantity,cardPIN)) {
+            return "Successfully returned " + quantity + " bagels for " + quantity*2 + " moneys. You know maybe just sue em next time";
+        } else {
+            return "You stupid head put in the wrong PIN dummy!";
         }
     }
 
@@ -38,11 +46,21 @@ public class BankApp {
         return whyDoYouWantASecondOne;
     }
 
-    public String CardCompare() {
+    public String cardCompare() {
         if (robinDaBank.lowerBalance(howDoTheseWork,whyDoYouWantASecondOne) != null) {
             return robinDaBank.lowerBalance(howDoTheseWork,whyDoYouWantASecondOne) + "\nHas less debt";
         } else {
             return howDoTheseWork + "\n" + whyDoYouWantASecondOne + "\nThey are the same";
         }
     }
+
+    public void depositMoneys() {
+        leOldeShoppe.depositProfits();
+    }
+
+    public BagelShop checkStatus() {
+        return leOldeShoppe;
+    }
+
+
 }
