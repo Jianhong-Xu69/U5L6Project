@@ -4,10 +4,7 @@ public class BankApp {
     private CreditCard howDoTheseWork;
     private CreditCard whyDoYouWantASecondOne;
 
-    public BankApp (String name) {
-        robinDaBank = new Bank();
-        leOldeShoppe = new BagelShop("Le Olde Shoppe", 500, 2, robinDaBank);
-        howDoTheseWork = new CreditCard("default", String.valueOf((int) (Math.random()*9000)+1000));
+    public BankApp () {
     }
 
     public CreditCard cardInfo() {
@@ -20,25 +17,25 @@ public class BankApp {
         return leOldeShoppe;
     }
 
-    public String buyThings (CreditCard card, int quantity, String cardPIN) {
-        if (leOldeShoppe.payForBagels(card,quantity,cardPIN)) {
+    public String buyThings (CreditCard card, BagelShop shop, int quantity, String cardPIN) {
+        if (shop.payForBagels(card,quantity,cardPIN)) {
             return "Successfully bought " + quantity + " bagels for " + quantity*2 + " moneys";
         } else {
             return "You stupid head put in the wrong PIN dummy! Or they ran out of stock one of the two";
         }
     }
 
-    public String returnThings (CreditCard card, int quantity, String cardPIN) {
-        if (leOldeShoppe.returnBagels(card,quantity,cardPIN)) {
+    public String returnThings (CreditCard card, BagelShop shop, int quantity, String cardPIN) {
+        if (shop.returnBagels(card,quantity,cardPIN)) {
             return "Successfully returned " + quantity + " bagels for " + quantity*2 + " moneys. You know maybe just sue em next time";
         } else {
             return "You stupid head put in the wrong PIN dummy!";
         }
     }
 
-    public String payDebt (CreditCard card, int amount) {
-        howDoTheseWork.reduceBalance(amount);
-        return "You now owe $" + (howDoTheseWork.getBalanceOwed());
+    public String payDebt (CreditCard card, Bank bank, int amount) {
+        card.reduceBalance(amount);
+        return "You now owe $" + (card.getBalanceOwed());
     }
 
     public CreditCard newOne(String name) {

@@ -11,6 +11,7 @@ public class Main
         Bank bank = new Bank();
         BagelShop store = new BagelShop("Joe's Bakery", 999, 2,bank);
         CreditCard card1 = new CreditCard(name, String.valueOf((int) (Math.random()*9000)+1000));
+        CreditCard card2;
         System.out.println(card1);
         // call methods from your BankApp object to handle program logic
 
