@@ -1,23 +1,16 @@
 public class BankApp {
-    private Bank robinDaBank;
-    private BagelShop leOldeShoppe;
-    private CreditCard howDoTheseWork;
-    private CreditCard whyDoYouWantASecondOne;
 
-    public BankApp () {
+    public static CreditCard cardInfo(CreditCard card) {
+        return card;
     }
-
-    public CreditCard cardInfo() {
-        return howDoTheseWork;
+    public static Bank bankInfo(Bank bank) {
+        return bank;
     }
-    public Bank bankInfo() {
-        return robinDaBank;
-    }
-    public BagelShop shopInfo() {
-        return leOldeShoppe;
+    public static BagelShop shopInfo(BagelShop shop) {
+        return shop;
     }
 
-    public String buyThings (CreditCard card, BagelShop shop, int quantity, String cardPIN) {
+    public static String buyThings (CreditCard card, BagelShop shop, int quantity, String cardPIN) {
         if (shop.payForBagels(card,quantity,cardPIN)) {
             return "Successfully bought " + quantity + " bagels for " + quantity*2 + " moneys";
         } else {
